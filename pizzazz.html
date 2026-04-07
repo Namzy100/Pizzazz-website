@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PizZazz — Men's Haircuts · Champaign, IL</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#F5EFE3;
+  --cream-dark:#EDE4D2;
+  --tan:#C4965A;
+  --tan-light:#D4AA76;
+  --tan-dark:#8B6535;
+  --brown:#4A2E10;
+  --brown-deep:#2E1A08;
+  --warm-white:#FBF7F0;
+  --text:#1E1108;
+  --text-muted:#7A5C35;
+  --border:rgba(74,46,16,0.12);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;overflow-x:hidden}
+
+nav{
+  position:sticky;top:0;z-index:200;
+  background:var(--brown-deep);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 3rem;height:68px;
+  border-bottom:1.5px solid var(--tan);
+}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--tan);text-decoration:none;letter-spacing:0.03em}
+.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
+.nav-links a{color:rgba(245,239,227,0.7);text-decoration:none;font-size:0.75rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--tan)}
+.nav-book{background:var(--tan) !important;color:var(--brown-deep) !important;padding:0.55rem 1.4rem;font-weight:500 !important;transition:background 0.2s !important}
+.nav-book:hover{background:var(--tan-light) !important;color:var(--brown-deep) !important}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;background:var(--brown-deep);position:relative;overflow:hidden}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:6rem 3rem 6rem 4rem;position:relative;z-index:2}
+.hero-tag{display:inline-flex;align-items:center;gap:0.75rem;font-size:0.7rem;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--tan);margin-bottom:2rem}
+.hero-tag::before{content:'';display:block;width:28px;height:1px;background:var(--tan)}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,5.5vw,5rem);color:var(--warm-white);line-height:1.08;margin-bottom:1.5rem}
+.hero h1 em{color:var(--tan);font-style:italic}
+.hero-desc{font-size:1rem;font-weight:300;color:rgba(251,247,240,0.52);max-width:380px;margin-bottom:2.5rem;line-height:1.85}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-gold{display:inline-block;background:var(--tan);color:var(--brown-deep);font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;padding:1rem 2.2rem;border:none;cursor:pointer;transition:background 0.2s,transform 0.15s}
+.btn-gold:hover{background:var(--tan-light);transform:translateY(-1px)}
+.btn-ghost{display:inline-block;background:transparent;color:var(--tan);font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;padding:1rem 2.2rem;border:1.5px solid rgba(196,150,90,0.35);transition:border-color 0.2s,color 0.2s}
+.btn-ghost:hover{border-color:var(--tan);color:var(--tan-light)}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2.5rem;border-top:1px solid rgba(196,150,90,0.15)}
+.stat-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--tan);display:block;line-height:1;margin-bottom:0.3rem}
+.stat-label{font-size:0.68rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(251,247,240,0.35)}
+
+.hero-right{position:relative;overflow:hidden}
+.hero-img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(0.72) contrast(1.05);display:block}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,var(--brown-deep) 0%,transparent 35%);z-index:1}
+.hero-badge{position:absolute;bottom:2.5rem;right:2rem;z-index:2;background:var(--tan);color:var(--brown-deep);padding:1rem 1.4rem;text-align:center}
+.hero-badge-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;display:block;line-height:1}
+.hero-badge-text{font-size:0.65rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase}
+
+.info-bar{background:var(--brown);display:flex;justify-content:center;flex-wrap:wrap;border-bottom:1.5px solid rgba(196,150,90,0.15)}
+.info-item{display:flex;align-items:center;gap:0.6rem;padding:1.1rem 2rem;border-right:1px solid rgba(196,150,90,0.1);font-size:0.78rem;font-weight:500;letter-spacing:0.07em;color:rgba(245,239,227,0.7);white-space:nowrap}
+.info-item:last-child{border-right:none}
+.info-item svg{flex-shrink:0;opacity:0.6}
+
+section{padding:6rem 2rem}
+.inner{max-width:1040px;margin:0 auto}
+.section-label{font-size:0.68rem;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;color:var(--tan-dark);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.7rem}
+.section-label::after{content:'';display:block;width:24px;height:1px;background:var(--tan-dark);opacity:0.5}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,2.8rem);color:var(--brown-deep);line-height:1.2;margin-bottom:1rem}
+.section-title em{font-style:italic;color:var(--tan-dark)}
+
+#gallery{background:var(--warm-white);padding:5rem 0}
+.gallery-header{padding:0 2rem;max-width:1040px;margin:0 auto 2.5rem}
+.gallery-strip{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;grid-template-rows:260px 220px;gap:4px;max-width:1200px;margin:0 auto;padding:0 2rem}
+.g-item{overflow:hidden;position:relative}
+.g-item:first-child{grid-row:1/3}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;display:block}
+.g-item:hover img{transform:scale(1.04)}
+
+#services{background:var(--cream)}
+.service-card{background:var(--brown-deep);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;max-width:820px}
+.svc-left{padding:3.5rem 3rem;border-right:1px solid rgba(196,150,90,0.12)}
+.svc-price{font-family:'Playfair Display',serif;font-size:5.5rem;color:var(--tan);line-height:1;margin-bottom:0.4rem}
+.svc-name{font-size:0.75rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:rgba(251,247,240,0.4);margin-bottom:2rem}
+.svc-desc{font-size:0.95rem;font-weight:300;color:rgba(251,247,240,0.55);line-height:1.85}
+.svc-right{padding:3.5rem 2.5rem;display:flex;flex-direction:column;justify-content:space-between}
+.svc-detail{margin-bottom:1.6rem}
+.svc-detail-label{font-size:0.63rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:rgba(196,150,90,0.45);margin-bottom:0.3rem}
+.svc-detail-val{font-size:0.95rem;color:rgba(251,247,240,0.7);font-weight:300}
+.svc-btn{display:inline-block;background:var(--tan);color:var(--brown-deep);font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;padding:0.95rem 1.8rem;transition:background 0.2s;margin-top:auto;align-self:flex-start}
+.svc-btn:hover{background:var(--tan-light)}
+
+#reviews{background:var(--brown-deep)}
+#reviews .section-label{color:var(--tan)}
+#reviews .section-label::after{background:var(--tan);opacity:0.4}
+#reviews .section-title{color:var(--warm-white)}
+#reviews .section-title em{color:var(--tan)}
+.stars{display:flex;gap:3px;margin-bottom:0.5rem}
+.star{width:13px;height:13px;fill:var(--tan)}
+.rating-row{display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem}
+.rating-big{font-family:'Playfair Display',serif;font-size:3.5rem;color:var(--tan);line-height:1}
+.rating-count{font-size:0.78rem;color:rgba(251,247,240,0.35);letter-spacing:0.05em;margin-top:0.3rem}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(196,150,90,0.08)}
+.rev-card{background:rgba(46,26,8,0.7);padding:2rem 1.8rem;display:flex;flex-direction:column;gap:0.75rem;transition:background 0.2s}
+.rev-card:hover{background:rgba(74,46,16,0.55)}
+.rev-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:0.98rem;color:rgba(251,247,240,0.82);line-height:1.75;flex:1}
+.rev-author{font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--tan);margin-top:0.5rem}
+.reviews-more{text-align:center;margin-top:2.5rem}
+.reviews-more a{font-size:0.78rem;color:var(--tan);letter-spacing:0.1em;text-decoration:none;border-bottom:1px solid rgba(196,150,90,0.25);padding-bottom:2px}
+
+#about{background:var(--cream-dark)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-img-wrap{position:relative}
+.about-img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block}
+.about-accent{position:absolute;bottom:-1.5rem;right:-1.5rem;background:var(--tan);padding:1.5rem 2rem;text-align:center}
+.about-accent-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--brown-deep);display:block;line-height:1}
+.about-accent-text{font-size:0.63rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--brown)}
+.about-body{font-size:0.98rem;font-weight:300;color:var(--text-muted);line-height:1.9;margin-bottom:1.4rem}
+.about-sig{font-family:'Playfair Display',serif;font-style:italic;font-size:1.4rem;color:var(--tan-dark);margin-top:0.5rem}
+
+#book{background:var(--warm-white)}
+.book-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem}
+.book-info{display:flex;flex-direction:column}
+.book-row{padding:1.4rem 0;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:0.25rem}
+.book-row:first-child{padding-top:0}
+.book-row-label{font-size:0.63rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--tan-dark)}
+.book-row-val{font-size:1rem;color:var(--text);font-weight:300}
+.book-row-val a{color:var(--tan-dark);text-decoration:none}
+.book-row-val a:hover{color:var(--tan)}
+.book-cta{background:var(--brown-deep);padding:3rem;display:flex;flex-direction:column;gap:1.5rem}
+.book-cta-headline{font-family:'Playfair Display',serif;font-size:2rem;color:var(--warm-white);line-height:1.25}
+.book-cta-headline em{color:var(--tan);font-style:italic}
+.book-cta-body{font-size:0.9rem;font-weight:300;color:rgba(251,247,240,0.4);line-height:1.8}
+.book-cta-note{font-size:0.75rem;color:rgba(251,247,240,0.25);letter-spacing:0.04em;margin-top:0.5rem}
+
+footer{background:var(--brown-deep);padding:2.5rem 3rem;display:flex;align-items:center;justify-content:space-between;border-top:1.5px solid rgba(196,150,90,0.15);flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--tan)}
+.footer-copy{font-size:0.72rem;color:rgba(251,247,240,0.2);letter-spacing:0.06em}
+.footer-phone{font-size:0.8rem;color:rgba(251,247,240,0.3);letter-spacing:0.06em;text-decoration:none}
+.footer-phone:hover{color:var(--tan)}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.65s ease,transform 0.65s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{height:60vw}
+  .hero-left{padding:4rem 2rem 3rem}
+  .hero-overlay{background:linear-gradient(to top,var(--brown-deep) 0%,transparent 55%)}
+  .gallery-strip{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .g-item:first-child{grid-row:auto;grid-column:1/3;height:240px}
+  .g-item:not(:first-child){height:170px}
+  .service-card{grid-template-columns:1fr}
+  .svc-right{border-top:1px solid rgba(196,150,90,0.12)}
+  .reviews-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr;gap:3rem}
+  .about-img{aspect-ratio:4/3}
+  .about-accent{bottom:-1rem;right:0.5rem}
+  .book-grid{grid-template-columns:1fr;gap:3rem}
+  nav{padding:0 1.5rem}
+  .nav-links{gap:1.5rem}
+  footer{padding:2rem 1.5rem}
+}
+@media(max-width:560px){
+  .hero-stats{flex-wrap:wrap;gap:1.5rem}
+  .info-item{padding:0.85rem 1.1rem;font-size:0.72rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">PizZazz</a>
+  <ul class="nav-links">
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="https://pizzazzchampaign.setmore.com/" target="_blank" class="nav-book">Book now</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-tag">Since 2012 · Champaign, IL</p>
+    <h1>A cut above<br>the <em>rest.</em></h1>
+    <p class="hero-desc">Men's haircuts on the UIUC campus, done right. Madlayn brings 20+ years of skill and a chair you'll actually look forward to sitting in.</p>
+    <div class="hero-actions">
+      <a href="https://pizzazzchampaign.setmore.com/" target="_blank" class="btn-gold">Book appointment</a>
+      <a href="#gallery" class="btn-ghost">See the work</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="stat-num">5.0</span><span class="stat-label">Star rating</span></div>
+      <div><span class="stat-num">49+</span><span class="stat-label">Reviews</span></div>
+      <div><span class="stat-num">$25</span><span class="stat-label">Flat price</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-overlay"></div>
+    <img class="hero-img" src="https://pizzazzchampaign.com/assets/img/uploads/Madlayn.jpg" alt="Madlayn at PizZazz"/>
+    <div class="hero-badge">
+      <span class="hero-badge-num">2012</span>
+      <span class="hero-badge-text">Est. on campus</span>
+    </div>
+  </div>
+</section>
+
+<div class="info-bar">
+  <div class="info-item">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.1"/><path d="M7 4v3.5L9 9" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
+    Mon–Thu &nbsp;·&nbsp; 11am – 4:30pm
+  </div>
+  <div class="info-item">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2.5" width="11" height="8" rx="1" stroke="currentColor" stroke-width="1.1"/><path d="M1.5 5.5h11" stroke="currentColor" stroke-width="1.1"/></svg>
+    Cash · Zelle · Venmo
+  </div>
+  <div class="info-item">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C4.79 1 3 2.79 3 5c0 3 4 8 4 8s4-5 4-8c0-2.21-1.79-4-4-4z" stroke="currentColor" stroke-width="1.1"/><circle cx="7" cy="5" r="1.3" stroke="currentColor" stroke-width="1.1"/></svg>
+    602A S First St, Champaign
+  </div>
+  <div class="info-item">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="4" width="12" height="7" rx="1" stroke="currentColor" stroke-width="1.1"/><path d="M4.5 4V3a2.5 2.5 0 015 0v1" stroke="currentColor" stroke-width="1.1"/></svg>
+    Appointments only
+  </div>
+  <div class="info-item">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 3h10M2 5.5h10M2 8h6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
+    Blue spaces · North side parking
+  </div>
+</div>
+
+<section id="gallery">
+  <div class="gallery-header">
+    <p class="section-label reveal">The work</p>
+    <h2 class="section-title reveal">Fresh cuts, <em>every time</em></h2>
+  </div>
+  <div class="gallery-strip reveal">
+    <div class="g-item">
+      <img src="https://pizzazzchampaign.com/assets/img/uploads/img_4545.jpg" alt="Haircut at PizZazz" loading="lazy"/>
+    </div>
+    <div class="g-item">
+      <img src="https://pizzazzchampaign.com/assets/img/uploads/7.jpg" alt="Haircut at PizZazz" loading="lazy"/>
+    </div>
+    <div class="g-item">
+      <img src="https://pizzazzchampaign.com/assets/img/uploads/3.jpg" alt="Haircut at PizZazz" loading="lazy"/>
+    </div>
+    <div class="g-item">
+      <img src="https://pizzazzchampaign.com/assets/img/uploads/img_1751.jpg" alt="Haircut at PizZazz" loading="lazy"/>
+    </div>
+    <div class="g-item">
+      <img src="https://pizzazzchampaign.com/assets/img/uploads/img_0694.jpg" alt="Haircut at PizZazz" loading="lazy"/>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="inner">
+    <p class="section-label reveal">What we offer</p>
+    <h2 class="section-title reveal">Simple pricing,<br><em>zero guesswork</em></h2>
+    <div class="service-card reveal">
+      <div class="svc-left">
+        <div class="svc-price">$25</div>
+        <div class="svc-name">Men's haircut</div>
+        <p class="svc-desc">Every cut is tailored to you — from clean fades to scissor work. Madlayn takes the time to listen, suggest, and deliver exactly what you're looking for. No rush, no assembly line.</p>
+      </div>
+      <div class="svc-right">
+        <div>
+          <div class="svc-detail">
+            <div class="svc-detail-label">Hours</div>
+            <div class="svc-detail-val">Monday – Thursday<br>11:00 am – 4:30 pm</div>
+          </div>
+          <div class="svc-detail">
+            <div class="svc-detail-label">Payment</div>
+            <div class="svc-detail-val">Cash, Zelle, Venmo</div>
+          </div>
+          <div class="svc-detail">
+            <div class="svc-detail-label">Booking</div>
+            <div class="svc-detail-val">By appointment only</div>
+          </div>
+          <div class="svc-detail">
+            <div class="svc-detail-label">Phone</div>
+            <div class="svc-detail-val">(217) 721-9724</div>
+          </div>
+        </div>
+        <a href="https://pizzazzchampaign.setmore.com/" target="_blank" class="svc-btn">Book your slot →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="inner">
+    <p class="section-label reveal">What people say</p>
+    <h2 class="section-title reveal">49 reviews.<br><em>5 stars.</em></h2>
+    <div class="rating-row reveal">
+      <div class="rating-big">5.0</div>
+      <div>
+        <div class="stars">
+          <svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg>
+          <svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg>
+          <svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg>
+          <svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg>
+          <svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg>
+        </div>
+        <div class="rating-count">49 reviews across Google & Setmore</div>
+      </div>
+    </div>
+    <div class="reviews-grid reveal">
+      <div class="rev-card">
+        <div class="stars"><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg></div>
+        <p class="rev-quote">"She paid close attention to exactly how I wanted my haircut and delivered it perfectly. You can tell she genuinely cares about the clients and their experience."</p>
+        <div class="rev-author">Anay A.</div>
+      </div>
+      <div class="rev-card">
+        <div class="stars"><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg></div>
+        <p class="rev-quote">"Been getting my haircut there for four years now. Always a superb cut, and an even more enjoyable experience. Madlayn is quite simply amazing."</p>
+        <div class="rev-author">Long-time customer</div>
+      </div>
+      <div class="rev-card">
+        <div class="stars"><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg></div>
+        <p class="rev-quote">"The first thing you notice is that the walls are covered with signatures from previous customers. It felt like a much-beloved local establishment."</p>
+        <div class="rev-author">Eric P.</div>
+      </div>
+      <div class="rev-card">
+        <div class="stars"><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg></div>
+        <p class="rev-quote">"Wonderful haircut and even better conversation. Worth every cent."</p>
+        <div class="rev-author">Nahid F. P.</div>
+      </div>
+      <div class="rev-card">
+        <div class="stars"><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg></div>
+        <p class="rev-quote">"She's personable and does a great job with my thick, curly hair. I recommend her to anybody — been coming for about 3 years now."</p>
+        <div class="rev-author">Adam B.</div>
+      </div>
+      <div class="rev-card">
+        <div class="stars"><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg><svg class="star" viewBox="0 0 14 14"><path d="M7 1l1.545 3.09 3.455.5-2.5 2.41.59 3.41L7 8.75l-3.09 1.66.59-3.41L2 4.59l3.455-.5z"/></svg></div>
+        <p class="rev-quote">"Great haircut and really nice conversation! Definitely give it a try."</p>
+        <div class="rev-author">Michael</div>
+      </div>
+    </div>
+    <div class="reviews-more reveal">
+      <a href="https://pizzazzchampaign.setmore.com/" target="_blank">Read all 49 reviews →</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="inner">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <img class="about-img" src="https://pizzazzchampaign.com/assets/img/uploads/Madlayn.jpg" alt="Madlayn, owner of PizZazz"/>
+        <div class="about-accent">
+          <span class="about-accent-num">20+</span>
+          <span class="about-accent-text">Years of craft</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="section-label">The barber</p>
+        <h2 class="section-title">Meet <em>Madlayn</em></h2>
+        <p class="about-body">I have been a hairstylist for more than 20 years. I'm very passionate about what I do and I enjoy meeting new people. I've always had a desire to open a men's hair salon on campus that could accommodate students and staff with affordable prices.</p>
+        <p class="about-body">In 2012, PizZazz opened its doors — and has been providing a welcoming environment for people of all nationalities ever since. When you sit in my chair, you're not just getting a haircut. You're getting a conversation, a real opinion, and a cut that'll turn heads.</p>
+        <p class="about-sig">— Madlayn</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="inner">
+    <p class="section-label reveal">Ready to come in</p>
+    <h2 class="section-title reveal">Book your <em>appointment</em></h2>
+    <div class="book-grid">
+      <div class="book-info reveal">
+        <div class="book-row">
+          <div class="book-row-label">Hours</div>
+          <div class="book-row-val">Monday – Thursday &nbsp;·&nbsp; 11:00 am – 4:30 pm<br><span style="opacity:0.45;font-size:0.85rem">Fri, Sat, Sun — closed</span></div>
+        </div>
+        <div class="book-row">
+          <div class="book-row-label">Price</div>
+          <div class="book-row-val">$25 flat — men's haircut</div>
+        </div>
+        <div class="book-row">
+          <div class="book-row-label">Payment</div>
+          <div class="book-row-val">Cash, Zelle, Venmo</div>
+        </div>
+        <div class="book-row">
+          <div class="book-row-label">Address</div>
+          <div class="book-row-val"><a href="https://maps.google.com/?q=602A+S+First+St+Champaign+IL+61820" target="_blank">602A S First St, Champaign, IL 61820</a></div>
+        </div>
+        <div class="book-row">
+          <div class="book-row-label">Parking</div>
+          <div class="book-row-val">North side — blue spaces</div>
+        </div>
+        <div class="book-row">
+          <div class="book-row-label">Phone</div>
+          <div class="book-row-val"><a href="tel:2177219724">(217) 721-9724</a></div>
+        </div>
+      </div>
+      <div class="book-cta reveal">
+        <h3 class="book-cta-headline">Ready for a cut that actually <em>hits?</em></h3>
+        <p class="book-cta-body">Book directly through our scheduling page. Pick your day, pick your time, and Madlayn will take care of the rest.</p>
+        <a href="https://pizzazzchampaign.setmore.com/" target="_blank" class="btn-gold" style="align-self:flex-start">Book on Setmore →</a>
+        <p class="book-cta-note">Appointments only · Available Mon–Thu</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">PizZazz</div>
+  <div class="footer-copy">&copy; 2026 PizZazz Barbershop · Champaign, IL</div>
+  <a href="tel:2177219724" class="footer-phone">(217) 721-9724</a>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 85);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
